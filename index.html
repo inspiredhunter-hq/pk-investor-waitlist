@@ -488,6 +488,7 @@
   </style>
 </head>
 <body>
+<p role="status" style="background:#ffe8a3;color:#1d2630;text-align:center;padding:12px;margin:0">QA preview. Use fictitious details. Nothing is sent or saved.</p>
 
   <!-- NAV -->
   <nav>
@@ -632,8 +633,7 @@ Wait, there was an issue with this. Let me look at the issue - the base64 output
         <h3>Secure Your Spot</h3>
         <p>Takes 60 seconds. No obligation.</p>
 
-        <form id="waitlistForm" name="investor-waitlist" method="POST" data-netlify="true" onsubmit="handleSubmit(event)">
-          <input type="hidden" name="form-name" value="investor-waitlist" />
+        <form id="waitlistForm" name="qa-investor-waitlist" onsubmit="handleSubmit(event)">
           <div class="form-group">
             <label>Full Name *</label>
             <input type="text" name="name" required placeholder="e.g. James Robertson" />
@@ -717,8 +717,8 @@ Wait, there was an issue with this. Let me look at the issue - the base64 output
         </form>
 
         <div class="success-msg" id="successMsg">
-          <h3>You're on the list! 🎉</h3>
-          <p>We'll be in touch within 2 working days to book your free strategy call. Keep an eye on your inbox.</p>
+          <h3>Test submission complete</h3>
+          <p>No information was submitted or saved.</p>
         </div>
       </div>
     </div>
@@ -770,24 +770,8 @@ Wait, there was an issue with this. Let me look at the issue - the base64 output
       e.preventDefault();
       const form = document.getElementById('waitlistForm');
       const success = document.getElementById('successMsg');
-      const btn = form.querySelector('button[type="submit"]');
-      btn.textContent = 'Submitting…';
-      btn.disabled = true;
-
-      fetch('/', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-        body: new URLSearchParams(new FormData(form)).toString()
-      })
-      .then(() => {
-        form.style.display = 'none';
-        success.style.display = 'block';
-      })
-      .catch(() => {
-        btn.textContent = 'JOIN THE WAITLIST →';
-        btn.disabled = false;
-        alert('Something went wrong — please try again or email us directly.');
-      });
+      form.style.display = 'none';
+      success.style.display = 'block';
     }
   </script>
 
